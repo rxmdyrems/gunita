@@ -76,8 +76,34 @@ class OpenCatalogScreen(
                 CatalogCard(item = item, onPlay = { item.streamUrl?.let(uriHandler::openUri) })
             }
             item {
-                TextButton(onClick = { uriHandler.openUri("https://archive.org/") }) {
-                    Text("Content credits and source catalog")
+                TextButton(onClick = { navigator.push(ContentCreditsScreen(items)) }) {
+                    Text("Content credits")
+                }
+            }
+        }
+    }
+}
+
+class ContentCreditsScreen(
+    private val items: List<CatalogItem>,
+) : Screen {
+    @Composable
+    override fun Content() {
+        val uriHandler = LocalUriHandler.current
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(16.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            item { Text("Content credits", style = MaterialTheme.typography.headlineMedium) }
+            items(items, key = { it.id }) { item ->
+                Column(modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp)) {
+                    Text(item.title, style = MaterialTheme.typography.titleMedium)
+                    Text("${item.authorCredit} · ${item.licenseSpdx}")
+                    Row {
+                        TextButton(onClick = { uriHandler.openUri(item.licenseUrl) }) { Text("License") }
+                        TextButton(onClick = { uriHandler.openUri(item.sourcePageUrl) }) { Text("Source") }
+                    }
                 }
             }
         }
@@ -99,6 +125,9 @@ private fun CatalogCard(item: CatalogItem, onPlay: () -> Unit) {
             Row(modifier = Modifier.padding(top = 10.dp)) {
                 Button(onClick = onPlay) { Text("Play") }
                 Spacer(Modifier.padding(horizontal = 4.dp))
+                TextButton(onClick = { uriHandler.openUri(item.licenseUrl) }) {
+                    Text("License")
+                }
                 TextButton(onClick = { uriHandler.openUri(item.sourcePageUrl) }) {
                     Text("Source")
                 }

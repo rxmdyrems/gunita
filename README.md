@@ -18,6 +18,14 @@ cd gunita
 
 See the Gradle files and upstream build configuration for architecture-specific tasks.
 
+## Built-in catalog
+
+Gunita opens on a built-in catalog of ten Blender Foundation open-film entries. The catalog keeps titles, descriptions, credits, license proof links, source pages, stream URLs, and verified size limits in the app. Media is streamed from the original Internet Archive host; Gunita does not rehost it. See [CONTENT_LICENSES.md](CONTENT_LICENSES.md) for the complete item list and proof links.
+
+The catalog is enabled by default and can be used without a Jellyfin or Komga server. Selecting **Play** opens the original HTTPS stream with the platform URI handler. The hosting service can see the device IP address. An optional **Add Jellyfin/Komga server** entry keeps the existing server login flow available.
+
+Manga entries, server settings for disabling the catalog, and an in-app video player are deferred. Contributions for new entries should follow [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## License and credits
 
 Gunita is distributed under the Apache License, Version 2.0. The repository retains the upstream `LICENSE` file and applicable third-party notices. Gunita credits and builds on [Komelia](https://github.com/Snd-R/Komelia) by Snd-R and its contributors.
