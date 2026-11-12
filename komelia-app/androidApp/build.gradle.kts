@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
-group = "io.github.snd-r.komelia"
+group = "io.github.rxmdyrems.gunita"
 version = libs.versions.app.version.get()
 
 
@@ -54,7 +54,7 @@ val androidVariant = runCatching {
 }.getOrDefault(AndroidVariant.STANDALONE)
 
 android {
-    namespace = "io.github.snd_r.komelia"
+    namespace = "io.github.rxmdyrems.gunita"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     val manifestFile = when (androidVariant) {
@@ -69,7 +69,7 @@ android {
         buildConfig = true
     }
     defaultConfig {
-        applicationId = "io.github.snd_r.komelia"
+        applicationId = "io.github.rxmdyrems.gunita"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = libs.versions.android.versionCode.get().toInt()

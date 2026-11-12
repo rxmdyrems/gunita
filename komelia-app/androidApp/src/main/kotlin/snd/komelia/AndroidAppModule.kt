@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Context
 import coil3.memory.MemoryCache
 import io.github.oshai.kotlinlogging.KotlinLogging
-import io.github.snd_r.komelia.BuildConfig
+import io.github.rxmdyrems.gunita.BuildConfig
 import io.github.vinceglb.filekit.PlatformFile
 import io.ktor.client.*
 import io.ktor.client.engine.okhttp.*
